@@ -10,7 +10,7 @@ The tests are written using [Playwright](https://playwright.dev/), a robust end-
 - **End-to-End Tests**: Validate the user flows such as adding items to the cart, navigating the homepage, and interacting with promo features.
 
 ## Project Structure
-
+```
 project-root/
 ├── tests/
 │   ├── e2e/                 # end-to-end Tests
@@ -29,7 +29,7 @@ project-root/
 │   └── test-data.ts         # Test data
 ├── playwright-report/       # Reports after running tests
 └── README.md                # Information about project 
-
+```
 ### Key Folders
 
 1. **tests/**: Contains all test cases organized into subcategories
@@ -81,5 +81,7 @@ CCART - <test number> <test description>
 
 This convention ensures that tests are easily identifiable and organized.
 
-CCART - 015
+Note! On the folder tests/unit are Unit tests for function(just for record)
+
+The last tests for Coffee Cart App is CCART - 015
 
