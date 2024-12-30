@@ -1,28 +1,28 @@
 //1
-function printEvenOrOdd (inputNumber : number): void {
+function isNumberEvenOrOdd (inputNumber : number){
     if (inputNumber % 2 === 0) {
-        console.log(`The number ${inputNumber} is even.`);
+        return `The number ${inputNumber} is even.`;
     } else {
-        console.log(`The number ${inputNumber} is odd.`)} 
+        return `The number ${inputNumber} is odd.`} 
 };
-printEvenOrOdd(-15);
+isNumberEvenOrOdd(-15);
 
 //2
-function getGreetingByTime (time: number) : void {
+function isGreetingByTime (time: number){
     if (time < 0 || time > 23) {
-        console.log("Invalid time! Please enter a time between 0 and 23.");
+        return "Invalid time! Please enter a time between 0 and 23.";
     } else 
     if (time < 12) {
-        console.log(`Now ${time}. Good morning!`);
+        return`Now ${time}. Good morning!`;
     }  
     if (time >= 12 && time <= 18) {
-        console.log(`Now ${time}. Good afternoon!`)
+        return`Now ${time}. Good afternoon!`
     } 
     if (time > 18){
-        console.log(`Now ${time}. Good evening!`);
+        return `Now ${time}. Good evening!`;
     }
 };
-getGreetingByTime(-12);
+isGreetingByTime(-12);
 
 //3
 function passedTest (inputScore: number) : void {
@@ -60,7 +60,7 @@ compareTwoNumbers(5,3);
 
 //6
 function trafficLightAction (lightColor : string): void {
-    lightColor = lightColor.toLocaleLowerCase();
+    lightColor = lightColor.toLowerCase();
     switch (lightColor) {
         case "green" :
             console.log('You can go!');

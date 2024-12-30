@@ -1,6 +1,6 @@
 import {test, expect} from '@playwright/test'
 
-function getGreetingByTime (time) {
+function isGreetingByTime (time) {
     if (time < 0 || time > 23) {
         return "Invalid time! Please enter a time between 0 and 23.";
     } else 
@@ -16,26 +16,26 @@ function getGreetingByTime (time) {
 };
 
 test('invalid time less than 0', async () => {
-    const result = getGreetingByTime(-1);
+    const result = isGreetingByTime(-1);
     expect(result).toBe("Invalid time! Please enter a time between 0 and 23.");
 });
 
 test('invalid time greater than 23', async () => {
-    const result = getGreetingByTime(24);
+    const result = isGreetingByTime(24);
     expect(result).toBe("Invalid time! Please enter a time between 0 and 23.");
 });
 
 test('valid time in the morning', async () => {
-    const result = getGreetingByTime(9);
+    const result = isGreetingByTime(9);
     expect(result).toBe("Now 9. Good morning!");
 });
 
 test('valid time in the afternoon', async () => {
-    const result = getGreetingByTime(15);
+    const result = isGreetingByTime(15);
     expect(result).toBe("Now 15. Good afternoon!");
 });
 
 test('valid time in the evening', async () => {
-    const result = getGreetingByTime(20);
+    const result = isGreetingByTime(20);
     expect(result).toBe("Now 20. Good evening!");
 });
