@@ -1,15 +1,5 @@
 import {test, expect} from '@playwright/test'
-
-function isNumberEvenOrOdd (inputNumber){
-    if (typeof inputNumber === "number") { 
-        if (inputNumber % 2 === 0) {
-            return `The number ${inputNumber} is even.`;
-        } else {
-            return `The number ${inputNumber} is odd.`} }
-    else {
-            throw Error("Use ONLY number type!");
-          }
-};
+import {isNumberEvenOrOdd} from '../../app/HW/HW7/isNumberEvenOrOdd'
 
 test("is even number", async () => {
     const result = isNumberEvenOrOdd(4);
@@ -43,7 +33,7 @@ test ("is even large number", async () => {
 
 test ("is odd large number", async () => {
     const result = isNumberEvenOrOdd(1000000000001);
-    expect(result).toBe("The number 1000000000001 is even.");
+    expect(result).toBe("The number 1000000000001 is odd.");
 });
 
 test("is not a number", async () => {
