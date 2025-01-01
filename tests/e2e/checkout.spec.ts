@@ -1,8 +1,8 @@
 import { test, expect } from '@playwright/test';
 import { testData } from '../../config/test-data-coffee';
-import { addCupToCart, navigateToHomePage} from '../../Page-objects/HomePage';
-import { navigateToCart} from '../../Page-objects/CartPage';
-import {submitCheckout, fillCustomerName, fillCustomerEmail, fillCustomerInvalidEmail} from "../../Page-objects/CheckoutPage"
+import { addCupToCart, navigateToHomePage} from '../../app/Pages/CoffeeCart/Home.page';
+import { navigateToCart} from '../../app/Pages/CoffeeCart/Cart.page';
+import {submitCheckout, fillCustomerName, fillCustomerEmail, fillCustomerInvalidEmail} from "../..//app/Pages/CoffeeCart/Checkout.page";
 
 test.beforeEach(async ({ page }) => {
   await navigateToHomePage(page);
