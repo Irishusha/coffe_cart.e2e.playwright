@@ -1,7 +1,7 @@
-import { test, expect } from '@playwright/test';
-import { testData } from '../../config/test-data-coffee';
-import { addCupToCart, hoverCheckoutButton, navigateToHomePage} from '../../Page-objects/HomePage';
-import { navigateToCart, removeMacchiato, deleteItems} from '../../Page-objects/CartPage';
+import {test, expect} from '@playwright/test';
+import {testData} from '../../config/test-data-coffee';
+import {addCupToCart, hoverCheckoutButton, navigateToHomePage} from '../../app/Pages/CoffeeCart/Home.page';
+import {navigateToCart, removeMacchiato, deleteItems} from '../../app/Pages/CoffeeCart/Cart.page';
 
 test.beforeEach(async ({ page }) => {
   await navigateToHomePage(page);

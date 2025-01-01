@@ -1,6 +1,6 @@
 import { test, expect } from '@playwright/test';
 import { testData } from '../../config/test-data-coffee';
-import { navigateToCartPage, navigateToGitHubPage, navigateToHomePage} from '../../Page-objects/HomePage';
+import { navigateToCartPage, navigateToGitHubPage, navigateToHomePage} from '../../app/Pages/CoffeeCart/Home.page';
 
 test.beforeEach(async ({ page }) => {
   await navigateToHomePage(page);
