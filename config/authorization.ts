@@ -1,5 +1,6 @@
-export const AutorizData = {
+export const autorizData = {
     baseURL: 'https://demo.learnwebdriverio.com',
-    emailOfUser: "irisha@test.com",
+    userName: 'irishatest6',
+    emailOfUser: "irishatest46@test.com",
     passwordOfUser: "123456789"
   };
