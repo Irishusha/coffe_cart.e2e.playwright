@@ -1,5 +1,5 @@
 import {Locator} from '@playwright/test';
-import { testData } from '../config/test-data-coffee';
+import { testData } from '../../../config/test-data-coffee';
 
 export async function submitCheckout (submitButton : Locator) {
     await submitButton.click();
