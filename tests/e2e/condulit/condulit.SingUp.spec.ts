@@ -1,8 +1,8 @@
 import {test, expect} from '@playwright/test';
-import {openSignUp} from '../../app/Pages/Condulit/Home.page';
-import {signUp, SignUpPage} from '../../app/Pages/Condulit/SignUp.page';
-import {navigateToMainPage} from '../../app/Pages/Condulit/Home.page';
-import {autorizData} from '../../config/authorization';
+import {openSignUp} from '../../../app/Pages/Condulit/Home.page';
+import {signUp, SignUpPage} from '../../../app/Pages/Condulit/SignUp.page';
+import {navigateToMainPage} from '../../../app/Pages/Condulit/Home.page';
+import {autorizData} from '../../../config/authorization';
 
 test("WEB - 002 Successfully Sign Up", async ({ page }) => {
     const signUpPage = new SignUpPage(page);   
