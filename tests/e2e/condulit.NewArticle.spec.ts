@@ -1,32 +1,25 @@
 import {test, expect} from '@playwright/test';
 import {testData} from '../../config/test-data-condulit';
-import {navigateToMainPage, openSignIn} from '../../app/Pages/Condulit/Home.page';
+import {HomePage, navigateToMainPage, openSignIn, createNewArticle} from '../../app/Pages/Condulit/Home.page';
 import {logIn} from '../../app/Pages/Condulit/LogIn.page';
-import {createNewArticle} from '../../app/Pages/Condulit/Home.page';
-import {fillAllFieldsOfArticle, publishArticle} from '../../app/Pages/Condulit/NewArticle.page';
+import {fillAllFieldsOfArticle, publishArticle, NewArticlePage} from '../../app/Pages/Condulit/NewArticle.page';
+import {SignInPage} from '../../app/Pages/Condulit/SignIn.page';
+import {PublishedPage} from '../../app/Pages/Condulit/Published.page';
 
 test('WEB - 001 Successfully created article', async ({ page }) => { 
-  const signInLink = page.locator('//a[contains(text(),"Sign in")]');
-  const emailField = page.locator('//input[@placeholder="Email"]');
-  const passwordField = page.locator('//input[@placeholder = "Password"]');
-  const signInButton = page.locator('//button[contains(@class, "btn-lg")]');
-  const newArticleLink = page.locator('//a[@href="/editor"]');
-  const titleField = page.locator('//input[@data-qa-id="editor-title"]');
-  const descriptionField = page.locator('//input[@data-qa-id="editor-description"]');
-  const textField = page.locator('//textarea[contains(@placeholder,"Write your article")]');
-  const tagsField = page.locator('//input[@data-qa-id="editor-tags"]');
-  const publishButton = page.locator('//button[@data-qa-id="editor-publish"]');
-  const textPublished = page.locator('//*[@data-qa-id="article-body"]/p');
-  const titlePublished = page.locator('//h1[@data-qa-id="article-title"]');
+  const homePage = new HomePage(page);  
+  const signInPage = new SignInPage(page);   
+  const newArticlePage = new NewArticlePage(page);
+  const publishedPage = new PublishedPage(page);
 
   await navigateToMainPage(page);
-  await openSignIn(signInLink);
-  await logIn(emailField, passwordField, signInButton);
-  await createNewArticle(newArticleLink);
-  await fillAllFieldsOfArticle(titleField, descriptionField, textField, tagsField);
-  await publishArticle(publishButton);
+  await openSignIn(homePage.signInLink);
+  await logIn(signInPage.emailField, signInPage.passwordField, signInPage.signInButton);
+  await createNewArticle(newArticlePage.newArticleLink);
+  await fillAllFieldsOfArticle(newArticlePage.titleField, newArticlePage.descriptionField, newArticlePage.textField, newArticlePage.tagsField);
+  await publishArticle(newArticlePage.publishButton);
 
-  await expect(titlePublished).toContainText(testData.newTitleOfArticle);
-  await expect(textPublished).toContainText(testData.textOfArticle);
-  expect(page.url()).toContain(testData.newTitleOfArticle);
+  await expect(publishedPage.titlePublished).toContainText(testData.newTitleOfArticle);
+  await expect(publishedPage.textPublished).toContainText(testData.textOfArticle);
+  expect(page.url()).toContain(testData.newTitleOfArticle.toLowerCase().replace(/ /g, '-'));
 });
