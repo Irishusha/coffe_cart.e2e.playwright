@@ -50,5 +50,3 @@ test('TELE - 002 Successful navigation to the page from the Slider', async ({ pa
     const header = await page.locator(locators.header).innerText();
     expect(header).toContain('товари');
 });
-
-
