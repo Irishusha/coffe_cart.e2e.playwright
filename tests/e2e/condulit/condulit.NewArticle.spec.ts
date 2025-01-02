@@ -1,10 +1,10 @@
 import {test, expect} from '@playwright/test';
-import {testData} from '../../config/test-data-condulit';
-import {HomePage, navigateToMainPage, openSignIn, createNewArticle} from '../../app/Pages/Condulit/Home.page';
-import {logIn} from '../../app/Pages/Condulit/LogIn.page';
-import {fillAllFieldsOfArticle, publishArticle, NewArticlePage} from '../../app/Pages/Condulit/NewArticle.page';
-import {SignInPage} from '../../app/Pages/Condulit/SignIn.page';
-import {PublishedPage} from '../../app/Pages/Condulit/Published.page';
+import {testData} from '../../../config/test-data-condulit';
+import {HomePage, navigateToMainPage, openSignIn, createNewArticle} from '../../../app/Pages/Condulit/Home.page';
+import {logIn} from '../../../app/Pages/Condulit/LogIn.page';
+import {fillAllFieldsOfArticle, publishArticle, NewArticlePage} from '../../../app/Pages/Condulit/NewArticle.page';
+import {SignInPage} from '../../../app/Pages/Condulit/SignIn.page';
+import {PublishedPage} from '../../../app/Pages/Condulit/Published.page';
 
 test('WEB - 001 Successfully created article', async ({ page }) => { 
   const homePage = new HomePage(page);  
