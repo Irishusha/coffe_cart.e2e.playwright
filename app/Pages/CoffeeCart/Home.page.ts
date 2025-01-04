@@ -1,4 +1,4 @@
-import { test, Page, Locator} from '@playwright/test';
+import {Page, Locator} from '@playwright/test';
 
 export async function navigateToHomePage(page: Page) {
     await page.goto('/');
