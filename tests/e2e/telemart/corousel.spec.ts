@@ -1,4 +1,4 @@
-import {test, expect} from '@playwright/test';
+import {test, expect, Locator, Page} from '@playwright/test';
 
 const locators = {
     carouselItems: '//*[@class="swiper-wrapper"]/a',
@@ -10,18 +10,35 @@ const locators = {
     searchInput: '.search__input'
 };
 
+async function getCarouselElementsLinks (carouselElements: Locator[]){
+    const carouselElementsLinks: string[] = [];
+    for (let i = 0; i < carouselElements.length; i++) {
+        const link: string | null = await carouselElements[i].getAttribute('href');
+        if (link !== null) {
+            carouselElementsLinks.push(link.toString());
+        };
+    };
+    return carouselElementsLinks;
+};
+
+function replaceCurrentURLWithUA (page: Page) : string{
+    let currentUrl = page.url();
+    currentUrl = currentUrl.replace('/ua', '');
+    return currentUrl;
+};
+
 test.beforeEach(async ({ page }) => {
     await page.goto('https://telemart.ua/ua/');
 });
 
 test('TELE - 001 Carousel should have more than 2 elements', async ({ page }) => {
     const carouselItems = page.locator(locators.carouselItems);
-    const length = await carouselItems.count();
-    expect(length).toBeGreaterThan(2);
+    const carouselItemsCount = await carouselItems.count();
+    expect(carouselItemsCount).toBeGreaterThan(2);
 });
 
 test('TELE - 002 Successful navigation to the page from the Slider', async ({ page }) => {
-     await page.addLocatorHandler(page.locator('.popover-body'), async () => {
+    await page.addLocatorHandler(page.locator('.popover-body'), async () => {
         await page.locator(locators.popoverButton).click();
         await page.locator(locators.searchInput).first().click();
     });
@@ -29,21 +46,15 @@ test('TELE - 002 Successful navigation to the page from the Slider', async ({ pa
     const nextSliderButton = page.locator(locators.nextSliderButton);
     const activeSlider = page.locator(locators.activeSlide);
     const carouselElements = await page.locator(locators.carouselItems).all();
-    const carouselElementsLinks: string[] = [];
-    
-    for (let i = 0; i < carouselElements.length; i++) {
-        const link: string | null = await carouselElements[i].getAttribute('href');
-        if (link !== null) {
-            carouselElementsLinks.push(link.toString());
-        };
-    };
+
+    const carouselElementsLinks = await getCarouselElementsLinks(carouselElements);
 
     await nextSliderButton.click();
     await nextSliderButton.click();
     await activeSlider.click();
+    
+    const currentUrl = replaceCurrentURLWithUA(page);
 
-    let currentUrl = page.url();
-    currentUrl = currentUrl.replace('/ua', '');
     const found = carouselElementsLinks.some(link => link === currentUrl);
     expect(found).toBe(true);
 

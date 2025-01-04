@@ -5,13 +5,11 @@ import { navigateToCart, CartPage} from '../../../app/Pages/CoffeeCart/Cart.page
 import {submitCheckout, fillCustomerName, fillCustomerEmail, fillCustomerInvalidEmail, CheckoutPage} from "../../../app/Pages/CoffeeCart/Checkout.page";
 
 let homePage: HomePage;
-let cartPage: CartPage;
 let checkoutPage: CheckoutPage;
 
 test.beforeEach(async ({ page }) => {
   await navigateToHomePage(page);
   homePage = new HomePage(page);
-  cartPage = new CartPage(page);
   checkoutPage = new CheckoutPage(page);
 });
 
