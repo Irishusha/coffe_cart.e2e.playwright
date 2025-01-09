@@ -50,6 +50,7 @@ test('TELE - 002 Successful navigation to the page from the Slider', async ({ pa
     const carouselElementsLinks = await getCarouselElementsLinks(carouselElements);
 
     await nextSliderButton.click();
+    await page.waitForTimeout(1000);
     await nextSliderButton.click();
     await activeSlider.click();
     
