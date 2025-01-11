@@ -1,6 +1,11 @@
-import {Page} from '@playwright/test';
+import {Locator, Page} from '@playwright/test';
 
 export class GitHubPage {
-    constructor(private page: Page) {}
-    githubPageText = this.page.locator('.container');
-};
+    readonly page: Page;
+    readonly githubPageText: Locator;
+
+    constructor(page: Page) {
+        this.page = page;
+        this.githubPageText = this.page.locator('.container');
+    };
+}

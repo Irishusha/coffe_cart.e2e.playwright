@@ -1,7 +1,13 @@
 import {Page, Locator} from '@playwright/test'
 
 export class PublishedPage {
-    constructor(private page: Page) {} 
-    textPublished = this.page.locator('//*[@data-qa-id="article-body"]/p');
-    titlePublished = this.page.locator('//h1[@data-qa-id="article-title"]');
+    readonly page : Page;
+    readonly textPublished : Locator;
+    readonly titlePublished: Locator;
+
+    constructor(page: Page) {
+        this.page = page;
+        this.textPublished = this.page.locator('//*[@data-qa-id="article-body"]/p');
+        this.titlePublished = this.page.locator('//h1[@data-qa-id="article-title"]');
+}
 }

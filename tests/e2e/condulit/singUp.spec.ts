@@ -1,15 +1,15 @@
 import {test, expect} from '@playwright/test';
-import {openSignUp} from '../../../app/Pages/Condulit/Home.page';
-import {signUp, SignUpPage} from '../../../app/Pages/Condulit/SignUp.page';
-import {navigateToMainPage} from '../../../app/Pages/Condulit/Home.page';
+import {HomePage} from '../../../app/Pages/Condulit/Home.page';
+import {SignUpPage} from '../../../app/Pages/Condulit/SignUp.page';
 import {autorizData} from '../../../config/authorization';
 
 test("WEB - 002 Successfully Sign Up", async ({ page }) => {
+    const homePage = new HomePage(page);
     const signUpPage = new SignUpPage(page);   
-    await navigateToMainPage(page);
-    await openSignUp(signUpPage.signUpLink);
-    await signUp(signUpPage.userNameFiled, signUpPage.emailOfUserField, signUpPage.passwordOfUserField, signUpPage.signUpButton);
+    await homePage.navigateToMainPage(page);
+    await homePage.openSignUp(signUpPage.signUpLink);
+    await signUpPage.signUp(signUpPage.userNameFiled, signUpPage.emailOfUserField, signUpPage.passwordOfUserField, signUpPage.signUpButton);
 
-    await expect(signUpPage.nameOfRegisteredUser(autorizData.userName)).toContainText(autorizData.userName);
+    await expect(signUpPage.nameOfRegisteredUser).toHaveText(autorizData.userName);
     await expect(signUpPage.newArticleLink).toBeVisible();
 });
