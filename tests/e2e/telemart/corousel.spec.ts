@@ -1,5 +1,4 @@
 import {test, expect, Locator, Page} from '@playwright/test';
-
 const locators = {
     carouselItems: '//*[@class="swiper-wrapper"]/a',
     nextSliderButton: '//*[@aria-label="Next slide"]',

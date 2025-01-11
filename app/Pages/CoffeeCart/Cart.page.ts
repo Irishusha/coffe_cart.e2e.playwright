@@ -1,24 +1,34 @@
-import { test, Page, Locator} from '@playwright/test';
+import {type Locator, type Page} from '@playwright/test';
+
 export class CartPage {
-    constructor(private page: Page) {}
-    noCoffeeMessage = this.page.locator('.list p');
-    checkoutLink = this.page.locator('[aria-label="Cart page"]');
-    removeAllMacchiato = this.page.locator('[aria-label="Remove all Espresso Macchiato"]');
-    totalOrder = this.page.locator('.pay');
-    titleOfLateInTheCart = this.page.locator('.list-item span', {hasText: 'Cafe Latte'});
-    priceOfLatteInTheCart = this.page.locator('.list-item', {hasText: '$16.00'});
-    totalCupsInCart = this.page.locator('.cart-preview .list-item');
-    deleteIcon = this.page.locator('.delete')
-};
+    readonly page: Page;
+    readonly noCoffeeMessage: Locator;
+    readonly checkoutLink: Locator;
+    readonly totalOrder: Locator;
+    readonly removeAllMacchiato: Locator;
+    readonly titleOfLateInTheCart : Locator;
+    readonly priceOfLatteInTheCart : Locator;
+    readonly totalCupsInCart : Locator;
+    readonly deleteIcon : Locator;
 
-export async function navigateToCart(cartLocator: Locator) {
-    await cartLocator.click();
-};
-
-export async function removeMacchiato(removeAllMacchiato: Locator) {
-    await removeAllMacchiato.click();
-};
-
-export async function deleteItems (deleteIcon: Locator) {
-    deleteIcon.click();
-};
+    constructor(page: Page) {
+        this.page = page;
+        this.noCoffeeMessage = this.page.locator('.list p');
+        this.checkoutLink = this.page.locator('[aria-label="Cart page"]');
+        this.removeAllMacchiato = this.page.locator('[aria-label="Remove all Espresso Macchiato"]');
+        this.totalOrder = this.page.locator('.pay');
+        this.titleOfLateInTheCart = this.page.locator('.list-item span', {hasText: 'Cafe Latte'});
+        this.priceOfLatteInTheCart = this.page.locator('.list-item', {hasText: '$16.00'});
+        this.totalCupsInCart = this.page.locator('.cart-preview .list-item');
+        this.deleteIcon = this.page.locator('.delete')
+    }
+    async navigateToCart(cartLocator: Locator) {
+        await cartLocator.click();
+    };
+    async removeMacchiato(removeAllMacchiato: Locator) {
+        await removeAllMacchiato.click();
+    };
+    async deleteItems (deleteIcon: Locator) {
+        deleteIcon.click();
+    };
+}
