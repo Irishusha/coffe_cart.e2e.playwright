@@ -1,24 +1,24 @@
-import {Page, Locator} from '@playwright/test';
+import {type Locator, type Page} from '@playwright/test';
 import {autorizData} from '../../../config/authorization';
 
-
 export class HomePage {
-  constructor(private page: Page) {}
-  signInLink = this.page.locator('//a[contains(text(),"Sign in")]');
-};
+  readonly page: Page;
+  readonly signInLink : Locator;
 
-export async function navigateToMainPage (page: Page) {
+  constructor(page: Page) {
+    this.page = page;
+    this.signInLink = this.page.locator('//a[contains(text(),"Sign in")]');
+};
+async navigateToMainPage (page: Page) {
   await page.goto(autorizData.baseURL);
 };
-
-export async function openSignIn (signInLink: Locator) {
+async openSignIn (signInLink: Locator) {
   await signInLink.click();
 };
-
-export async function openSignUp (signUpLink: Locator) {
+async openSignUp (signUpLink: Locator) {
   await signUpLink.click();
 };
-
-export async function createNewArticle (newArticleLink: Locator) {
+async createNewArticle (newArticleLink: Locator) {
   await newArticleLink.click();
 };
+}
