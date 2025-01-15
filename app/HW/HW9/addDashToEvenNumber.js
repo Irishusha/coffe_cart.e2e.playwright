@@ -9,4 +9,4 @@ export function addDashToEvenNumber(StringToEdit) {
     }    
     return resultArray.join(''); 
 }
-console.log(addDashToEvenNumber('025468'));
+console.log(addDashToEvenNumber('125468'));

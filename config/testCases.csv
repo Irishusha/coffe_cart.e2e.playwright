@@ -1,0 +1,6 @@
+testId,firstName,lastName,gender,phone,isSuccessful
+Demo - 1,Alex,Wilber,Female,1234567890,TRUE
+Demo - 2,,Wilber,Male,1234567890,FALSE
+Demo - 3,Alex,,Male,1234567890,FALSE
+Demo - 4,Alex,Wilber,Other,,FALSE
+Demo - 5,Alex,Wilber, ,1234567890,FALSE

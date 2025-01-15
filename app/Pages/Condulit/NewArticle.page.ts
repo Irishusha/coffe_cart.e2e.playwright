@@ -2,7 +2,7 @@ import {Locator, Page} from '@playwright/test';
 import {testData} from '../../../config/test-data-condulit';
 
 export class NewArticlePage {
-  readonly page: Page
+  private readonly page: Page
   readonly newArticleLink: Locator;
   readonly titleField: Locator;
   readonly descriptionField: Locator;
@@ -12,12 +12,12 @@ export class NewArticlePage {
 
   constructor(page: Page) {
     this.page = page;
-    this.newArticleLink = this.page.locator('//a[@href="/editor"]');
-    this.titleField = this.page.locator('//input[@data-qa-id="editor-title"]');
-    this.descriptionField = this.page.locator('//input[@data-qa-id="editor-description"]');
-    this.textField = this.page.locator('//textarea[contains(@placeholder,"Write your article")]');
-    this.tagsField = this.page.locator('//input[@data-qa-id="editor-tags"]');
-    this.publishButton = this.page.locator('//button[@data-qa-id="editor-publish"]');
+    this.newArticleLink = page.locator('//a[@href="/editor"]');
+    this.titleField = page.locator('//input[@data-qa-id="editor-title"]');
+    this.descriptionField = page.locator('//input[@data-qa-id="editor-description"]');
+    this.textField = page.locator('//textarea[contains(@placeholder,"Write your article")]');
+    this.tagsField = page.locator('//input[@data-qa-id="editor-tags"]');
+    this.publishButton = page.locator('//button[@data-qa-id="editor-publish"]');
 }
 async fillAllFieldsOfArticle(titleField : Locator, descriptionField : Locator, textField: Locator, tagsField: Locator) {
   await titleField.fill(testData.newTitleOfArticle);

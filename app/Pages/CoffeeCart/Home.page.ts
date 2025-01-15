@@ -1,7 +1,7 @@
 import {Page, Locator} from '@playwright/test';
 
 export class HomePage {
-    readonly page: Page;
+    private readonly page: Page;
     readonly cartLink: Locator;
     readonly cappuccinoCup: Locator;
     readonly latteCup: Locator;
@@ -17,18 +17,18 @@ export class HomePage {
 
     constructor(page: Page) {
         this.page = page;
-        this.cartLink= this.page.locator('[aria-label="Cart page"]');
-        this.cappuccinoCup = this.page.locator('[data-test="Cappuccino"]');
-        this.latteCup = this.page.locator('[data-test="Cafe_Latte"]');
-        this.macchiatoCup = this.page.locator('[data-test="Espresso_Macchiato"]');
-        this.americanoCup = this.page.locator('[data-test="Americano"]');
-        this.mochaCup = this.page.locator('[data-test="Mocha"]');
-        this.cafeBreveCup = this.page.locator('[data-test="Cafe_Breve"]');
-        this.checkoutButton = this.page.locator('[data-test="checkout"]');
-        this.addedCupToCart = this.page.locator('.list-item', {hasText : "Cappuccino"});
-        this.githubLink = this.page.locator('[aria-label="GitHub page"]');
-        this.allCoffeeCups = this.page.locator('.cup');
-        this.discountedCoffeeInCart = this.page.locator('.list-item span', { hasText: '(Discounted) Mocha' });
+        this.cartLink= page.locator('[aria-label="Cart page"]');
+        this.cappuccinoCup = page.locator('[data-test="Cappuccino"]');
+        this.latteCup = page.locator('[data-test="Cafe_Latte"]');
+        this.macchiatoCup = page.locator('[data-test="Espresso_Macchiato"]');
+        this.americanoCup = page.locator('[data-test="Americano"]');
+        this.mochaCup = page.locator('[data-test="Mocha"]');
+        this.cafeBreveCup = page.locator('[data-test="Cafe_Breve"]');
+        this.checkoutButton = page.locator('[data-test="checkout"]');
+        this.addedCupToCart = page.locator('.list-item', {hasText : "Cappuccino"});
+        this.githubLink = page.locator('[aria-label="GitHub page"]');
+        this.allCoffeeCups = page.locator('.cup');
+        this.discountedCoffeeInCart = page.locator('.list-item span', { hasText: '(Discounted) Mocha' });
 }
 async navigateToGitHubPage(githubLink: Locator) {
     await githubLink.click();

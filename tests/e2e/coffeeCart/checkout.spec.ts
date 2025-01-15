@@ -1,6 +1,6 @@
 import {test, expect } from '@playwright/test';
 import {testData } from '../../../config/test-data-coffee';
-import {navigateToHomePage,HomePage} from '../../../app/Pages/CoffeeCart/Home.page';
+import {navigateToHomePage, HomePage} from '../../../app/Pages/CoffeeCart/Home.page';
 import {CartPage} from '../../../app/Pages/CoffeeCart/Cart.page';
 import {CheckoutPage} from "../../../app/Pages/CoffeeCart/Checkout.page";
 
