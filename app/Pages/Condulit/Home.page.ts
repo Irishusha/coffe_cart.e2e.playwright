@@ -2,12 +2,12 @@ import {type Locator, type Page} from '@playwright/test';
 import {autorizData} from '../../../config/authorization';
 
 export class HomePage {
-  readonly page: Page;
+  private readonly page: Page;
   readonly signInLink : Locator;
 
   constructor(page: Page) {
     this.page = page;
-    this.signInLink = this.page.locator('//a[contains(text(),"Sign in")]');
+    this.signInLink = page.locator('//a[contains(text(),"Sign in")]');
 };
 async navigateToMainPage (page: Page) {
   await page.goto(autorizData.baseURL);
