@@ -9,7 +9,7 @@ function parametrizeString(myString) {
         if (letter === " ") {
             resultString = resultString + "-";
         }   else {
-                resultString = resultString + letter;
+            resultString = resultString + letter;
         }    
     } 
     return resultString;

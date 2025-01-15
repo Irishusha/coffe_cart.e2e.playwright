@@ -2,7 +2,7 @@ import {Locator, Page} from '@playwright/test';
 import {testData} from '../../../config/test-data-coffee';
 
 export class CheckoutPage {
-    readonly page: Page;
+    private readonly page: Page;
     readonly nameOfCustomerField: Locator;
     readonly emailOfCustomerField: Locator;
     readonly submitButton: Locator;
@@ -11,11 +11,11 @@ export class CheckoutPage {
 
     constructor(page: Page) {
         this.page = page;
-        this.nameOfCustomerField = this.page.locator('[name="name"]');
-        this.emailOfCustomerField = this.page.locator('[name="email"]');
-        this.submitButton = this.page.locator('[type="submit"]');
-        this.successCheckout = this.page.locator('.success');
-        this.modalHeader = this.page.locator('.modal h1');
+        this.nameOfCustomerField = page.locator('[name="name"]');
+        this.emailOfCustomerField = page.locator('[name="email"]');
+        this.submitButton = page.locator('[type="submit"]');
+        this.successCheckout = page.locator('.success');
+        this.modalHeader = page.locator('.modal h1');
 }
 async submitCheckout (submitButton : Locator) {
     await submitButton.click();

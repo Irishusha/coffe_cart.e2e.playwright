@@ -85,3 +85,10 @@ Note! On the folder tests/unit are Unit tests for function(just for record)
 
 The last tests for Coffee Cart App is CCART - 015
 
+To interact with CSV files we use the csv-parse library. All documentation about this lib you can find here: https://www.npmjs.com/package/csv-parse and 
+https://playwright.dev/docs/test-parameterize#create-tests-via-a-csv-file
+
+For install: 
+npm i csv-parse
+
+
