@@ -16,21 +16,21 @@ test.beforeEach(async ({ page }) => {
 });
 
 test('CCART - 010 GitHub page is opened', async ({ page }) => {
-  await homePage.navigateToGitHubPage(homePage.githubLink);
+  await homePage.navigateToGitHubPage();
 
   await expect(page).toHaveURL(testData.GithubURL);
   await expect(gitHubPage.githubPageText).toContainText(testData.textOnGitHubPage);
 });
 
 test('CCART - 011 Shopping Cart page is opened', async ({ page }) => {
-  await homePage.navigateToCartPage(homePage.cartLink);
+  await homePage.navigateToCartPage();
 
   await expect(page).toHaveURL(testData.CartURL);
   await expect(cartPage.noCoffeeMessage).toContainText(testData.emptyCartMessage);
 });
 
 test('CCART - 012 Home page is opened', async ({ page }) => {
-  await homePage.navigateToCartPage(homePage.cartLink);
+  await homePage.navigateToCartPage();
   await navigateToHomePage(page);
 
   await expect(page).toHaveURL('/');

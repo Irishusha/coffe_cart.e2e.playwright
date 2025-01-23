@@ -12,10 +12,10 @@ export class PromoPage {
         this.acceptPromoButton = page.locator('.yes');
         this.skipPromoButton = page.getByRole('button', { name: 'Nah, I\'ll skip.' });
 };
-async acceptThePromo(acceptPromoButton: Locator) {
-    await acceptPromoButton.click();
+async acceptThePromo() {
+    await this.acceptPromoButton.click();
 };
-async skipThePromo(skipPromoButton: Locator){
-    await skipPromoButton.click();
+async skipThePromo(){
+    await this.skipPromoButton.click();
 };
 }

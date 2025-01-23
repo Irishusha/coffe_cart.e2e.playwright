@@ -1,5 +1,4 @@
 import {Locator, Page} from '@playwright/test';
-import {testData} from '../../../config/test-data-coffee';
 
 export class CheckoutPage {
     readonly page: Page;
@@ -17,16 +16,17 @@ export class CheckoutPage {
     this.successCheckout = page.locator('.success');
     this.modalHeader = page.locator('.modal h1');
 }
-async submitCheckout (submitButton : Locator) {
-    await submitButton.click();
+
+async submitCheckout () {
+    await this.submitButton.click();
 };
-async fillCustomerName(nameOfCustomerField : Locator) {
-    await nameOfCustomerField.fill(testData.nameOfCustomer);
+async fillCustomerName(customerName: string) {
+    await this.nameOfCustomerField.fill(customerName);
 };
-async fillCustomerEmail(emailOfCustomerField : Locator) {
-    await emailOfCustomerField.fill(testData.emailOfCustomer);
+async fillCustomerEmail(customerEmail : string) {
+    await this.emailOfCustomerField.fill(customerEmail);
 };
-async fillCustomerInvalidEmail(emailOfCustomerField : Locator) {
-    await emailOfCustomerField.fill(testData.InvalidEmailOfCustomer);
+async fillCustomerInvalidEmail(customerInvalidEmail : string) {
+    await this.emailOfCustomerField.fill(customerInvalidEmail);
 };
 }

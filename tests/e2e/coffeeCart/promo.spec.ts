@@ -21,14 +21,14 @@ test('CCART - 013 Promo is visible', async ({ page }) => {
   });
 
 test('CCART - 014 Accept the promo', async ({ page }) => {
-    await homePage.addCupToCart(homePage.cafeBreveCup);
-    await homePage.addCupToCart(homePage.mochaCup);
-    await homePage.addCupToCart(homePage.cafeBreveCup);
-    await promoPage.acceptThePromo(promoPage.acceptPromoButton);
-    await homePage.hoverCheckoutButton(homePage.checkoutButton);
+  await homePage.addCupToCart(homePage.cafeBreveCup);
+  await homePage.addCupToCart(homePage.mochaCup);
+  await homePage.addCupToCart(homePage.cafeBreveCup);
+  await promoPage.acceptThePromo();
+  await homePage.hoverCheckoutButton();
 
-    await expect(homePage.discountedCoffeeInCart).toBeVisible();
-    await expect(homePage.checkoutButton).toContainText('Total: $42.00');
+  await expect(homePage.discountedCoffeeInCart).toBeVisible();
+  await expect(homePage.checkoutButton).toContainText('Total: $42.00');
   });
 
  
@@ -36,8 +36,8 @@ test('CCART - 015 Skip the promo', async ({ page }) => {
   await homePage.addCupToCart(homePage.cappuccinoCup);
   await homePage.addCupToCart(homePage.mochaCup);
   await homePage.addCupToCart(homePage.cafeBreveCup);
-  await promoPage.skipThePromo(promoPage.skipPromoButton);
-  await homePage.hoverCheckoutButton(homePage.checkoutButton);
+  await promoPage.skipThePromo();
+  await homePage.hoverCheckoutButton();
 
   await expect(homePage.discountedCoffeeInCart).not.toBeVisible();
   await expect(homePage.checkoutButton).toContainText('Total: $42.00');

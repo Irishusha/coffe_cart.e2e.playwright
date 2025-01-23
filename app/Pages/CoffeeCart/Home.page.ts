@@ -30,18 +30,21 @@ export class HomePage {
         this.allCoffeeCups = page.locator('.cup');
         this.discountedCoffeeInCart = page.locator('.list-item span', { hasText: '(Discounted) Mocha' });
 }
-async navigateToGitHubPage(githubLink: Locator) {
-    await githubLink.click();
+async navigateToGitHubPage() {
+    await this.githubLink.click();
 };
-async navigateToCartPage(cartLink: Locator) {
-    await cartLink.click();
+async navigateToCartPage() {
+    await this.cartLink.click();
 };
 async addCupToCart(cupLocator: Locator) {
     await cupLocator.click();
 };
-async hoverCheckoutButton (checkoutButton : Locator) {
-    await checkoutButton.hover();
+async hoverCheckoutButton () {
+    await this.checkoutButton.hover();
 };
+async navigateToCheckout() {
+    await this.checkoutButton.click();
+}
 }
 export async function navigateToHomePage(page: Page) {
     await page.goto('/');
