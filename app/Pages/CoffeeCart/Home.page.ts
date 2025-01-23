@@ -1,7 +1,7 @@
 import {Page, Locator} from '@playwright/test';
 
 export class HomePage {
-    private readonly page: Page;
+    readonly page: Page;
     readonly cartLink: Locator;
     readonly cappuccinoCup: Locator;
     readonly latteCup: Locator;
@@ -43,7 +43,6 @@ async hoverCheckoutButton (checkoutButton : Locator) {
     await checkoutButton.hover();
 };
 }
-
 export async function navigateToHomePage(page: Page) {
     await page.goto('/');
 };

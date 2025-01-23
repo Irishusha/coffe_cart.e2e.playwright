@@ -6,7 +6,9 @@ import {autorizData} from '../../../config/authorization';
 test("WEB - 002 Successfully Sign Up", async ({ page }) => {
     const homePage = new HomePage(page);
     const signUpPage = new SignUpPage(page);   
+
     await homePage.navigateToMainPage(page);
+    
     await homePage.openSignUp(signUpPage.signUpLink);
     await signUpPage.signUp(signUpPage.userNameFiled, signUpPage.emailOfUserField, signUpPage.passwordOfUserField, signUpPage.signUpButton);
 

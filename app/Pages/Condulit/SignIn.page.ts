@@ -1,7 +1,7 @@
 import { Locator, Page } from "@playwright/test";
 
 export class SignInPage {
-    private readonly page : Page;
+    readonly page : Page;
     readonly emailField: Locator;
     readonly passwordField: Locator;
     readonly signInButton: Locator;

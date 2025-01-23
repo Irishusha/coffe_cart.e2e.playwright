@@ -1,7 +1,7 @@
 import {Locator, Page, expect} from '@playwright/test';
 
 export class PracticeFormPage {
-    private readonly page: Page;
+    readonly page: Page;
     readonly firstNameField: Locator;
     readonly lastNameField : Locator;
     readonly emailField : Locator;
@@ -48,7 +48,9 @@ export class PracticeFormPage {
         await this.emailField.fill(email);
     };
     getGenderLocator(gender: string): Locator {
-        return this.page.getByText(gender, { exact: true });
+        if (gender == ' ') {
+            return this.page.getByText('Male', { exact: true });
+        } else return this.page.getByText(gender, { exact: true });
     }
     async chooseGender (gender: string) {
         if (!gender.trim()) { 
@@ -84,7 +86,7 @@ export class PracticeFormPage {
         await this.cityDropDown.click();
         await this.CityGurgaon.click();
     };
-    async SubmitForm () {
+    async submitForm () {
         await this.submitButton.click();
     };
     async SuccessfulSubmitForm () {
@@ -114,20 +116,3 @@ export class PracticeFormPage {
         await expect(this.phoneField).toHaveCSS('border-color', 'rgb(220, 53, 69)'); //#dc3545
     };
 }
-/*await expect(page.locator('//td[text()="Student Name"]/following-sibling::td')).toHaveText('Fist name last name');
-
-await expect(page.locator('//td[text()="Student Email"]/following-sibling::td')).toHaveText('ekjhkjh@hgf.com');
-
-await expect(page.locator('//td[text()="Gender"]/following-sibling::td')).toHaveText('Male');
-
-await expect(page.locator('//td[text()="Mobile"]/following-sibling::td')).toHaveText('1234567899');
-
-await expect(page.locator('//td[text()="Date of Birth"]/following-sibling::td')).toHaveText('01 January,1995');
-
-await expect(page.locator('//td[text()="Subjects"]/following-sibling::td')).toHaveText('English');
-
-await expect(page.locator('//td[text()="Hobbies"]/following-sibling::td')).toHaveText('');
-await expect(page.locator('//td[text()="Picture"]/following-sibling::td')).toHaveText('cat_icon.png');
-
-await expect(page.locator('//td[text()="Address"]/following-sibling::td')).toHaveText('Some Address 123456 Street');
-await expect(page.locator('//td[text()="State and City"]/following-sibling::td')).toHaveText('NCR Gurgaon');*/

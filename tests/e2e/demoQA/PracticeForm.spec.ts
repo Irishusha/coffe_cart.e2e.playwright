@@ -3,7 +3,7 @@ import {HomePage} from '../../../app/Pages/DemoQA/Home.page';
 import {PracticeFormPage} from '../../../app/Pages/DemoQA/PracticeForm.page'
 
 
-test(` practice form`, async ({ page}) => {
+test('practice form', async ({ page}) => {
     let homePage: HomePage;
     let practiceFormPage : PracticeFormPage;
     homePage = new HomePage(page);
@@ -22,7 +22,7 @@ test(` practice form`, async ({ page}) => {
     await practiceFormPage.fillAddress();
     await practiceFormPage.chooseState();
     await practiceFormPage.chooseCity();
-    await practiceFormPage.SubmitForm();
+    await practiceFormPage.submitForm();
 
     await practiceFormPage.SuccessfulSubmitForm();
 

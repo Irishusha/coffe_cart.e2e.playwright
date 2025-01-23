@@ -54,38 +54,29 @@ for (const {
   isSuccessful
 } of testCases) {
 
-test(`${testId} fill practice form with parametrize`, async ({ page}) => {
-    let homePage: HomePage;
-    let practiceFormPage : PracticeFormPage;
-    homePage = new HomePage(page);
-    practiceFormPage = new PracticeFormPage(page);
+test(`${testId} fill practice form with parametrize`, async ({page}) => {
+    let homePage : HomePage = new HomePage(page);
+    let practiceFormPage : PracticeFormPage = new PracticeFormPage(page);
 
     await homePage.navigateToPracticeFormPage();
     await practiceFormPage.fillFirstName(firstName);
     await practiceFormPage.fillLastName(lastName);
     await practiceFormPage.chooseGender(gender);
     await practiceFormPage.fillPhone(phone);
-    await practiceFormPage.SubmitForm();
+    await practiceFormPage.submitForm();
 
     if (isSuccessful) {
         await practiceFormPage.SuccessfulSubmitForm();
     } else {
         await practiceFormPage.UNSuccessfulSubmitForm();
-       /*
-        try {
-        await practiceFormPage.firstNameFieldIsMarkedAsRequired();
-    } catch {
-        try {
-            await practiceFormPage.lastNameFieldIsMarkedAsRequired();
-        } catch {
-            try {
-                await practiceFormPage.genderFieldIsMarkedAsRequired(gender);
-            } catch {
-                await practiceFormPage.mobileFieldIsMarkedAsRequired();
-            }
         }
-    }
-       */
-    }
+/*
+    {
+            if (testId === "Demo - 2") await practiceFormPage.firstNameFieldIsMarkedAsRequired();
+            if (testId === "Demo - 3") await practiceFormPage.lastNameFieldIsMarkedAsRequired();
+            if (testId === "Demo - 4") await practiceFormPage.mobileFieldIsMarkedAsRequired();
+            if (testId === "Demo - 5") await practiceFormPage.genderFieldIsMarkedAsRequired(gender);
+        }
+    }*/
 })};
 

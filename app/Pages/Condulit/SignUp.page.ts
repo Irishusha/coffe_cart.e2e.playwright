@@ -2,7 +2,7 @@ import {Locator, Page} from '@playwright/test';
 import {autorizData} from '../../../config/authorization';
 
 export class SignUpPage {
-    private readonly page : Page;
+    readonly page : Page;
     readonly signUpLink : Locator;
     readonly userNameFiled : Locator;
     readonly emailOfUserField : Locator;
@@ -27,7 +27,4 @@ export class SignUpPage {
         await passwordOfUser.fill(autorizData.passwordOfUser);
         await signUpButton.click();
     }
-   /* async nameOfRegisteredUser (userName : string) {
-        return this.page.locator(`//a[@href="/@${autorizData.userName}/"]`);
-    }*/
 }

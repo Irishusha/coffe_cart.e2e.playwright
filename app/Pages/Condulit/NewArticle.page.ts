@@ -2,7 +2,7 @@ import {Locator, Page} from '@playwright/test';
 import {testData} from '../../../config/test-data-condulit';
 
 export class NewArticlePage {
-  private readonly page: Page
+  readonly page: Page
   readonly newArticleLink: Locator;
   readonly titleField: Locator;
   readonly descriptionField: Locator;

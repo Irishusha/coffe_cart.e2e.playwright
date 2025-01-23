@@ -2,7 +2,7 @@ import {Locator, Page} from '@playwright/test';
 import {autorizData} from '../../../config/authorization';
 
 export class LoginPage  {
-  private readonly page: Page;
+  readonly page: Page;
 
   constructor(page: Page) {
     this.page = page;

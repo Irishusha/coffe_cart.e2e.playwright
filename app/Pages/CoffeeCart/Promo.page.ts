@@ -1,7 +1,7 @@
 import {Locator, Page} from '@playwright/test';
 
 export class PromoPage {
-    private readonly page: Page;
+    readonly page: Page;
     readonly promoMessage : Locator;
     readonly acceptPromoButton : Locator;
     readonly skipPromoButton : Locator;

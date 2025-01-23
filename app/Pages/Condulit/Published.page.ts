@@ -1,7 +1,7 @@
 import {Page, Locator} from '@playwright/test'
 
 export class PublishedPage {
-    private readonly page : Page;
+    readonly page : Page;
     readonly textPublished : Locator;
     readonly titlePublished: Locator;
 
