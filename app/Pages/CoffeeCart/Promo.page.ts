@@ -13,9 +13,9 @@ export class PromoPage {
         this.skipPromoButton = page.getByRole('button', { name: 'Nah, I\'ll skip.' });
 };
 async acceptThePromo() {
-    await this.acceptPromoButton.click();
+    return await this.acceptPromoButton.click();
 };
 async skipThePromo(){
-    await this.skipPromoButton.click();
+    return await this.skipPromoButton.click();
 };
 }

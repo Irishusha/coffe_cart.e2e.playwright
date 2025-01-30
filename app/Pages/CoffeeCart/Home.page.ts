@@ -31,21 +31,26 @@ export class HomePage {
         this.discountedCoffeeInCart = page.locator('.list-item span', { hasText: '(Discounted) Mocha' });
 }
 async navigateToGitHubPage() {
-    await this.githubLink.click();
+    return await this.githubLink.click();
 };
 async navigateToCartPage() {
-    await this.cartLink.click();
+    return await this.cartLink.click();
 };
-async addCupToCart(cupLocator: Locator) {
-    await cupLocator.click();
+private async getCupLocator(cupLocator: Locator) {
+    return await cupLocator.click();
 };
 async hoverCheckoutButton () {
-    await this.checkoutButton.hover();
+    return await this.checkoutButton.hover();
 };
 async navigateToCheckout() {
-    await this.checkoutButton.click();
+   return await this.checkoutButton.click();
+};
+async navigateToHomePage() {
+    await this.page.goto('https://coffee-cart.app/');
 }
-}
-export async function navigateToHomePage(page: Page) {
-    await page.goto('/');
+async addCupsToCart(cups: Locator[]) {
+    for (const cup of cups) {
+        await this.getCupLocator(cup);
+    }
+  }
 };

@@ -1,19 +1,8 @@
-import {test, expect } from '@playwright/test';
+import {test, expect } from '../../fixtures/coffeeCart/checkoutFixtures';
 import {testData} from '../../../config/test-data-coffee';
-import {navigateToHomePage, HomePage} from '../../../app/Pages/CoffeeCart/Home.page';
-import {CheckoutPage} from "../../../app/Pages/CoffeeCart/Checkout.page";
 
-let homePage: HomePage;
-let checkoutPage: CheckoutPage;
-
-test.beforeEach(async ({ page }) => {
-  await navigateToHomePage(page);
-  homePage = new HomePage(page);
-  checkoutPage = new CheckoutPage(page);
-});
-
-test('CCART - 006 Success checkout - ALL valid Data', {tag: ['@checkout']}, async ({ page }) => {
-  await homePage.addCupToCart(homePage.macchiatoCup);
+test('CCART - 006 Success checkout - ALL valid Data', {tag: ['@checkout']}, async ({ homePage, checkoutPage }) => {
+  await homePage.addCupsToCart([homePage.macchiatoCup]);
   await homePage.navigateToCheckout();
 
   await checkoutPage.fillCustomerName(testData.nameOfCustomer);
@@ -23,8 +12,8 @@ test('CCART - 006 Success checkout - ALL valid Data', {tag: ['@checkout']}, asyn
   await expect(checkoutPage.successCheckout).toContainText(testData.checkoutSuccessMessage);
 });
 
-test('CCART - 007 Unsuccessful Checkout - EMPTY ALL data', {tag: ['@checkout']}, async ({ page }) => {
-  await homePage.addCupToCart(homePage.mochaCup);
+test('CCART - 007 Unsuccessful Checkout - EMPTY ALL data', {tag: ['@checkout']}, async ({ homePage, checkoutPage }) => {
+  await homePage.addCupsToCart([homePage.mochaCup]);
   await homePage.navigateToCheckout();
   await checkoutPage.submitCheckout();
 
@@ -32,8 +21,8 @@ test('CCART - 007 Unsuccessful Checkout - EMPTY ALL data', {tag: ['@checkout']},
   await expect(checkoutPage.submitButton).toBeEnabled();
 });
  
-test('CCART - 008 Unsuccessful Checkout - EMPTY Name', async ({ page }) => {
-  await homePage.addCupToCart(homePage.cappuccinoCup);
+test('CCART - 008 Unsuccessful Checkout - EMPTY Name', async ({ homePage, checkoutPage }) => {
+  await homePage.addCupsToCart([homePage.cappuccinoCup]);
   await homePage.navigateToCheckout();
   await checkoutPage.fillCustomerEmail(testData.emailOfCustomer);
   await checkoutPage.submitCheckout();
@@ -42,8 +31,8 @@ test('CCART - 008 Unsuccessful Checkout - EMPTY Name', async ({ page }) => {
   await expect(checkoutPage.submitButton).toBeEnabled();
 });
 
-test('CCART - 009 Unsuccessful Checkout - Invalid Email', async ({ page }) => {
-  await homePage.addCupToCart(homePage.cappuccinoCup);
+test('CCART - 009 Unsuccessful Checkout - Invalid Email', async ({ homePage, checkoutPage }) => {
+  await homePage.addCupsToCart([homePage.cappuccinoCup]);
   await homePage.navigateToCheckout();
   await checkoutPage.fillCustomerName(testData.nameOfCustomer);
   await checkoutPage.fillCustomerInvalidEmail(testData.InvalidEmailOfCustomer);

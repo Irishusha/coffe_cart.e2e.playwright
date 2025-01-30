@@ -1,23 +1,14 @@
-import {test, expect} from '@playwright/test';
-import {HomePage} from '../../../app/Pages/Telemart/Home.Page'
+import {test, expect} from '../../fixtures/telemart/homePageFixtures';
 
-let homePage: HomePage;
-
-test.beforeEach(async ({ page }) => {
-    await page.goto('https://telemart.ua/ua/');
-    homePage = new HomePage(page);
-});
-
-test('TELE - 001 Carousel should have more than 2 elements', async ({ page }) => {
+test('TELE - 001 Carousel should have more than 2 elements', async ({ homePage }) => {
     const carouselItemsCount = await homePage.carouselItems.count();
     expect(carouselItemsCount).toBeGreaterThan(2);
 });
 
-test('TELE - 002 Successful navigation to the page from the Slider', async ({ page }) => {
+test('TELE - 002 Successful navigation to the page from the Slider', async ({ homePage, page }) => {
     const carouselElements = homePage.carouselItems.all();
     const carouselElementsLinks = await homePage.getCarouselElementsLinks(await carouselElements);
     await homePage.nextSliderButton.click();
-    //await page.waitForTimeout(1000);
     await homePage.nextSliderButton.click();
     await homePage.activeSlide.click();
     

@@ -1,6 +1,4 @@
-import {test} from '@playwright/test';
-import {HomePage} from '../../../app/Pages/DemoQA/Home.page';
-import {PracticeFormPage} from '../../../app/Pages/DemoQA/PracticeForm.page'
+import {test} from '../../fixtures/demoQA/PracticeFormFixtures';
 
 const testCases = [
     {
@@ -54,9 +52,7 @@ for (const {
   isSuccessful
 } of testCases) {
 
-test(`${testId} fill practice form with parametrize`, async ({page}) => {
-    let homePage : HomePage = new HomePage(page);
-    let practiceFormPage : PracticeFormPage = new PracticeFormPage(page);
+test(`${testId} fill practice form with parametrize`, async ({homePage, practiceFormPage}) => {
 
     await homePage.navigateToPracticeFormPage();
     await practiceFormPage.fillFirstName(firstName);

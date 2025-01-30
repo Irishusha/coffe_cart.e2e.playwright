@@ -13,6 +13,11 @@ The tests are written using [Playwright](https://playwright.dev/), a robust end-
 ```
 project-root/
 ├── tests/
+│   ├── fixtures/
+│   │   ├── coffeeCart
+│   │   ├── condulit
+│   │   ├── demoQA
+│   │   ├── telemart
 │   ├── e2e/                 # end-to-end Tests
 │   │   ├── cart.spec.ts     # Tests for shopping cart
 │   │   ├── homepage.spec.ts # Tests for home page

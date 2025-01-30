@@ -1,14 +1,6 @@
-import {test} from '@playwright/test';
-import {HomePage} from '../../../app/Pages/DemoQA/Home.page';
-import {PracticeFormPage} from '../../../app/Pages/DemoQA/PracticeForm.page'
+import {test} from '../../fixtures/demoQA/PracticeFormFixtures';
 
-
-test('practice form', async ({ page}) => {
-    let homePage: HomePage;
-    let practiceFormPage : PracticeFormPage;
-    homePage = new HomePage(page);
-    practiceFormPage = new PracticeFormPage(page);
-
+test('practice form', async ({homePage, practiceFormPage}) => {
     await homePage.navigateToPracticeFormPage();
     await practiceFormPage.fillFirstName('first name');
     await practiceFormPage.fillLastName('last name');

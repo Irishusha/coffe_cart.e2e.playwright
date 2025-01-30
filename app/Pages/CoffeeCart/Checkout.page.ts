@@ -18,15 +18,15 @@ export class CheckoutPage {
 }
 
 async submitCheckout () {
-    await this.submitButton.click();
+    return await this.submitButton.click();
 };
 async fillCustomerName(customerName: string) {
-    await this.nameOfCustomerField.fill(customerName);
+    return await this.nameOfCustomerField.fill(customerName);
 };
 async fillCustomerEmail(customerEmail : string) {
-    await this.emailOfCustomerField.fill(customerEmail);
+    return await this.emailOfCustomerField.fill(customerEmail);
 };
 async fillCustomerInvalidEmail(customerInvalidEmail : string) {
-    await this.emailOfCustomerField.fill(customerInvalidEmail);
+    return await this.emailOfCustomerField.fill(customerInvalidEmail);
 };
 }

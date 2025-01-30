@@ -38,14 +38,14 @@ export class PracticeFormPage {
         
 }
     async fillFirstName (firstName: string) {
-        await this.firstNameField.fill(firstName);
+        return await this.firstNameField.fill(firstName);
     };
 
     async fillLastName(lastName: string) {
-        await this.lastNameField.fill(lastName);
+        return await this.lastNameField.fill(lastName);
     };
     async fillEmail(email: string) {
-        await this.emailField.fill(email);
+        return await this.emailField.fill(email);
     };
     getGenderLocator(gender: string): Locator {
         if (gender == ' ') {
@@ -59,11 +59,11 @@ export class PracticeFormPage {
         await genderLocator.click();
     };
     async fillPhone(phone: string) {
-        await this.phoneField.fill(phone);
+        return await this.phoneField.fill(phone);
 
     };
     async fillDateOfBirth () {
-        await this.dateOfBirthField.fill('01/01/1995');
+        return await this.dateOfBirthField.fill('01/01/1995');
     };
     async fillSubject () {
         await this.subjectsField.click();

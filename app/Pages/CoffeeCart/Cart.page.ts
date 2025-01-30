@@ -23,13 +23,12 @@ export class CartPage {
         this.deleteIcon = page.locator('.delete')
     }
     async navigateToCart() {
-        await this.checkoutLink.click();
+        return await this.checkoutLink.click();
     };
-    
     async removeMacchiato() {
-        await this.removeAllMacchiato.click();
+        return await this.removeAllMacchiato.click();
     };
     async deleteItems () {
-        await this.deleteIcon.click();
+        return await this.deleteIcon.click();
     };
 }

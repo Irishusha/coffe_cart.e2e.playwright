@@ -19,13 +19,13 @@ export class NewArticlePage {
     this.tagsField = page.locator('//input[@data-qa-id="editor-tags"]');
     this.publishButton = page.locator('//button[@data-qa-id="editor-publish"]');
 }
-async fillAllFieldsOfArticle(titleField : Locator, descriptionField : Locator, textField: Locator, tagsField: Locator) {
-  await titleField.fill(testData.newTitleOfArticle);
-  await descriptionField.fill(testData.descriptionOfArticle);
-  await textField.fill(testData.textOfArticle);
-  await tagsField.fill(testData.tagsOfArticle);
+async fillAllFieldsOfArticle() {
+  await this.titleField.fill(testData.newTitleOfArticle);
+  await this.descriptionField.fill(testData.descriptionOfArticle);
+  await this.textField.fill(testData.textOfArticle);
+  await this.tagsField.fill(testData.tagsOfArticle);
 };
-async publishArticle(publishButton : Locator) {
-  await publishButton.click();
+async publishArticle() {
+  await this.publishButton.click();
 };
 }

@@ -1,29 +1,14 @@
-import {test, expect} from '@playwright/test';
+import {test, expect} from '../../fixtures/coffeeCart/promoFixtures';
 import {testData} from '../../../config/test-data-coffee';
-import {navigateToHomePage, HomePage} from '../../../app/Pages/CoffeeCart/Home.page';
-import {PromoPage} from "../../../app/Pages/CoffeeCart/Promo.page"
 
-let homePage: HomePage;
-let promoPage: PromoPage;
-
-test.beforeEach(async ({ page }) => {
-  await navigateToHomePage(page);
-  homePage = new HomePage(page);
-  promoPage = new PromoPage(page);
-});
-
-test('CCART - 013 Promo is visible', async ({ page }) => {
-  await homePage.addCupToCart(homePage.cafeBreveCup);
-  await homePage.addCupToCart(homePage.mochaCup);
-  await homePage.addCupToCart(homePage.cafeBreveCup);
+test('CCART - 013 Promo is visible', async ({ homePage, promoPage }) => {
+  await homePage.addCupsToCart([homePage.cafeBreveCup, homePage.mochaCup,homePage.cafeBreveCup]);
 
   await expect(promoPage.promoMessage).toContainText(testData.promoMessage);
   });
 
-test('CCART - 014 Accept the promo', async ({ page }) => {
-  await homePage.addCupToCart(homePage.cafeBreveCup);
-  await homePage.addCupToCart(homePage.mochaCup);
-  await homePage.addCupToCart(homePage.cafeBreveCup);
+test('CCART - 014 Accept the promo', async ({ homePage, promoPage }) => {
+  await homePage.addCupsToCart([homePage.cafeBreveCup,homePage.mochaCup, homePage.cafeBreveCup]);
   await promoPage.acceptThePromo();
   await homePage.hoverCheckoutButton();
 
@@ -32,10 +17,8 @@ test('CCART - 014 Accept the promo', async ({ page }) => {
   });
 
  
-test('CCART - 015 Skip the promo', async ({ page }) => {
-  await homePage.addCupToCart(homePage.cappuccinoCup);
-  await homePage.addCupToCart(homePage.mochaCup);
-  await homePage.addCupToCart(homePage.cafeBreveCup);
+test('CCART - 015 Skip the promo', async ({ homePage,promoPage }) => {
+  await homePage.addCupsToCart([homePage.cappuccinoCup, homePage.mochaCup,homePage.cafeBreveCup]);
   await promoPage.skipThePromo();
   await homePage.hoverCheckoutButton();
 

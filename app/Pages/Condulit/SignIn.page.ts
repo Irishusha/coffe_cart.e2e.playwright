@@ -1,4 +1,5 @@
 import { Locator, Page } from "@playwright/test";
+import {autorizData} from '../../../config/authorization';
 
 export class SignInPage {
     readonly page : Page;
@@ -12,4 +13,9 @@ export class SignInPage {
         this.passwordField = page.locator('//input[@placeholder = "Password"]');
         this.signInButton = page.locator('//button[contains(@class, "btn-lg")]');
 }
+async signIn() {
+    await this.emailField.fill(autorizData.emailOfUser);
+    await this.passwordField.fill(autorizData.passwordOfUser);
+    await this.signInButton.click();
+  };
 }
