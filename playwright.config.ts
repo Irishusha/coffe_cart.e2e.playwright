@@ -27,6 +27,9 @@ export default defineConfig({
   use: {
     /* Base URL to use in actions like `await page.goto('/')`. */
     baseURL: 'https://coffee-cart.app',
+    extraHTTPHeaders: {
+      'Content-Type': 'application/json',
+    },
 
     /* Collect trace when retrying the failed test. See https://playwright.dev/docs/trace-viewer */
     trace: 'on-first-retry',
@@ -38,6 +41,17 @@ export default defineConfig({
       name: 'chromium',
       use: { ...devices['Desktop Chrome'] },
     },
+    {
+      name: 'api',
+      testMatch: '**/tests-api/**/*.api.ts', 
+      use: {
+        baseURL: 'https://conduit-api.learnwebdriverio.com/api/',
+        extraHTTPHeaders: {
+          'Content-Type': 'application/json',
+        },
+      },
+    },
+
 /*
     {
       name: 'firefox',
