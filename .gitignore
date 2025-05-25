@@ -7,3 +7,5 @@ tests-examples/
 /.vscode/
 /tests/e2e/condulit/.state/
 tests/condulit_test/.env
+.env
+.vs
