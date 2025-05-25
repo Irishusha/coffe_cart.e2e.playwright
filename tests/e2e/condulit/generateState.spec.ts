@@ -13,6 +13,7 @@ test("Generate the storageState", async ({ page, context }) => {
     const responsePromise = page.waitForResponse(response => response.url().includes("/api/user/"));
     await signInButton.click();
     await responsePromise;
+    
 
     const statePath = "tests/e2e/condulit/.state/state.json";
     await context.storageState({ path: statePath });
