@@ -1,6 +1,7 @@
 import {test} from '@playwright/test';
 import {autorizData} from '../../../config/authorization'
 
+
 test("Generate the storageState", async ({ page, context }) => {
     const emailField = page.locator('//input[@placeholder="Email"]');
     const passwordField = page.locator('//input[@placeholder = "Password"]');
